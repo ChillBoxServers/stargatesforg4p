@@ -1,0 +1,10 @@
+{
+	"title"		:	"G4P Stargates",
+	"type"		:	"ServerContent",
+	"ignore"	:
+	[
+		"*.psd",
+		"*.vcproj",
+		"*.svn*"
+	]
+}
