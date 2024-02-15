@@ -124,28 +124,28 @@ function SGS_SetTelePorterDestination(ply,cmd,args)
 					v:SetOutAng(v2["outang"])
 				end
 			end
-			SGS.LastUsedGate = v
+			SGS_AllStargates.LastUsedGate = v
 			break
 
 		end
 	end
-	SGS.LastUsedGate:SetUpPortal()
+	SGS_AllStargates.LastUsedGate:SetUpPortal()
 
 	for k,v in pairs(ents.FindByClass("sgs_stargate")) do
 		if(v:GetNWString("GateWorld") ==  args[1])then
 			if(v.CanOpen == false)then ply:ChatPrint("Target stargate already active!") return end
 			for k2,v2 in pairs(SGS_AllStargates) do
-				if(v2["world"] == SGS.LastUsedGate:GetNWString("GateWorld"))then
+				if(v2["world"] == SGS_AllStargates.LastUsedGate:GetNWString("GateWorld"))then
 					v:SetOutPos(v2["outpos"])
 				end
 			end
 
-			SGS.LastUsedGate = v
+			SGS_AllStargates.LastUsedGate = v
 			break
 		end
 		
 	end
-	SGS.LastUsedGate:SetUpPortal()
+	SGS_AllStargates.LastUsedGate:SetUpPortal()
 
 end
 concommand.Add( "sgs_setgateworld", SGS_SetTelePorterDestination )

@@ -11,24 +11,26 @@ SGS_CL_Worlds = {
 	[9] = {"pvp2", "PVP World (South Side)"},
 }
 
+SGS_Gates = {}
+
 SGS_ConsoleMenuOpen = false
 function SGS_OpenStargeteConsole()
 	if(SGS_ConsoleMenuOpen == true)then return end
-	SGS.consolemenu = vgui.Create( "DFrame" )
-	SGS.consolemenu:ShowCloseButton(true)
-	SGS.consolemenu:SetDraggable(false)
-	SGS.consolemenu:SetSize( 320,340 )
-	SGS.consolemenu:SetPos( ScrW() / 2 - 160, ScrH() / 2 - 170 )
-	SGS.consolemenu:SetTitle(" Stargete Console v0.1 (WIP)")
-	SGS.consolemenu:MakePopup()
+	SGS_Gates.consolemenu = vgui.Create( "DFrame" )
+	SGS_Gates.consolemenu:ShowCloseButton(true)
+	SGS_Gates.consolemenu:SetDraggable(false)
+	SGS_Gates.consolemenu:SetSize( 320,340 )
+	SGS_Gates.consolemenu:SetPos( ScrW() / 2 - 160, ScrH() / 2 - 170 )
+	SGS_Gates.consolemenu:SetTitle(" Stargete Console v0.1 (WIP)")
+	SGS_Gates.consolemenu:MakePopup()
 	SGS_ConsoleMenuOpen = true
 
-	local worldlist = vgui.Create( "DListView", SGS.consolemenu )
+	local worldlist = vgui.Create( "DListView", SGS_Gates.consolemenu )
 	worldlist:Dock( FILL )
 	worldlist:SetMultiSelect( false )
 	worldlist:AddColumn( "World" )
 	worldlist:AddColumn( "Id" )
-	local TextEntry = vgui.Create( "DTextEntry", SGS.consolemenu)
+	local TextEntry = vgui.Create( "DTextEntry", SGS_Gates.consolemenu)
 	TextEntry:Dock( BOTTOM )
 
 	TextEntry.OnEnter = function( self )
@@ -50,10 +52,10 @@ function SGS_OpenStargeteConsole()
 		local cmd = worldlist:GetLine(worldlist:GetSelectedLine()):GetValue(2)
 		RunConsoleCommand("sgs_setgateworld",cmd)
 		SGS_ConsoleMenuOpen = false
-		SGS.consolemenu:Close()
+		SGS_Gates.consolemenu:Close()
 	end
 
-	function SGS.consolemenu:OnClose()		
+	function SGS_Gates.consolemenu:OnClose()		
 		SGS_ConsoleMenuOpen = false
 	end 
 end

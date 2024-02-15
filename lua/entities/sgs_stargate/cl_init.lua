@@ -3,6 +3,7 @@ include("shared.lua")
 ENT.RenderGroup = RENDERGROUP_BOTH
 
 function ENT:Draw()
+	if(!IsValid(SGS))then self.Entity:DrawModel() return end
 	local pl = LocalPlayer()
 	local dis = pl:GetPos():DistToSqr(self:GetPos())
 	if SGS.drawdistance == nil then return end

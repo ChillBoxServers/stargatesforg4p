@@ -78,8 +78,8 @@ function ENT:SetUpConsole(world)
 	console:SetCollisionGroup(COLLISION_GROUP_WEAPON)
 	
 	timer.Simple(5, function()
-		console:SetParent(nil) 
-		console:CPPISetOwner(game.GetWorld())
+		console:SetParent(nil)
+		if(IsValid(CPPI))then console:CPPISetOwner(game.GetWorld()) end
 		console:SetNWString("Owner","World") 
 	end)
 	
