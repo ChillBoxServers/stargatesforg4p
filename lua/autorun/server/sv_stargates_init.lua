@@ -89,6 +89,7 @@ SGS_Stargates_Loaded = false;
 
 
 function SGS_LoadStargates()
+	if(game.GetMap() != "gms_g4p_stargate_v11") then return end
 	if(SGS_Stargates_Loaded == true)then return end
 	for k,v in pairs(ents.GetAll()) do
 		if(v.IsConsole == true)then v:Remove() end
